@@ -25,4 +25,5 @@ in
     # To reference in the builder to create erase and upload scripts
     bossa = bossa;
     coreutils = coreutils;
+    armgcc = pkgs.gcc-arm-embedded;
   }
