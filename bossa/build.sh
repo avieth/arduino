@@ -6,7 +6,6 @@ for p in $buildInputs; do
 done
 
 cp -R $src/src $TMP/
-cp -R $src/obj $TMP/
 cp -R $src/arduino $TMP/
 cp -R $src/install $TMP/
 cp -R $src/res $TMP/
