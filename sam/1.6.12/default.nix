@@ -1,7 +1,9 @@
-with import <nixpkgs> {};
+{ nixpkgs ? import <nixpkgs> {} }:
+
+with nixpkgs;
 
 let
-  inputs = [ pkgs.coreutils pkgs.gcc-arm-embedded ];
+  inputs = [ pkgs.coreutils pkgs.findutils pkgs.gcc-arm-embedded ];
 in
   stdenv.mkDerivation {
     name = "arduino-due";
