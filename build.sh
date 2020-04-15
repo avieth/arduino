@@ -13,6 +13,7 @@ INCLUDES="-I$sam/include/system/libsam \
  -I$sam/include/system/CMSIS/Device/ATMEL \
  -I$sam/include/cores/arduino \
  -I$sam/include/cores/arduino/avr \
+ -I$sam/include/cores/arduino/USB \
  -I$sam/include/variants/arduino_due_x"
 
 COMMON_FLAGS="-g -Os -w -ffunction-sections -fdata-sections -nostdlib \
