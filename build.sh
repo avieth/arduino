@@ -60,3 +60,5 @@ cp erase $out/
 echo "${BOSSAC} -e -w ./build.bin --boot=1 -v -R \$@" >> upload
 chmod 755 upload
 cp upload $out/
+
+cp ${BOSSAC} $out/
