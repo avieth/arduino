@@ -1,4 +1,7 @@
-{ nixpkgs ? import <nixpkgs> {} }:
+{ nixpkgs ? import <nixpkgs> {} 
+, usb_manufacturer ? "Arduino LLC"
+, usb_product ? "Arduino Due"
+}:
 
 with nixpkgs;
 
@@ -12,4 +15,6 @@ in
     args = [ ./build.sh ];
     buildInputs = inputs;
     src = ./.;
+    inherit usb_manufacturer;
+    inherit usb_product;
   }

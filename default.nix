@@ -1,9 +1,16 @@
-{ nixpkgs ? import <nixpkgs> {} }:
+{ nixpkgs ? import <nixpkgs> {}
+, usb_manufacturer ? "Arduino LLC"
+, usb_product ? "Arduino Due"
+}:
 
 with nixpkgs;
 
 let
-  sam = import ./sam/1.6.12/default.nix { inherit nixpkgs; };
+  sam = import ./sam/1.6.12/default.nix {
+    inherit nixpkgs;
+    inherit usb_manufacturer;
+    inherit usb_product;
+  };
   # we need a custom 1.6.1 bossa build for arduino. Other builds just don't
   # seem to work but I don't know why.
   bossa = import ./bossa/default.nix { inherit nixpkgs; };
@@ -26,4 +33,6 @@ in
     bossa = bossa;
     coreutils = coreutils;
     armgcc = pkgs.gcc-arm-embedded;
+    usb_manufacturer = usb_manufacturer;
+    usb_product = usb_product;
   }

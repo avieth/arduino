@@ -10,9 +10,9 @@ done
 DEFINES="-Dprintf=iprintf -DF_CPU=84000000L -DARDUINO=10809 -D__SAM3X8E__ \
  -DUSB_PID=0x003e -DUSB_VID=0x2341 \
  -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM \
- -DUSBCON"
-
-# "-DUSB_MANUFACTURER="Arduino LLC"" "-DUSB_PRODUCT="Arduino Due""'
+ -DUSBCON"# \
+ # -DUSB_MANUFACTURER=\""$usb_manufacturer"\" \
+ # -DUSB_PRODUCT=\""$usb_product"\""
 
 INCLUDES="-I$src/system/libsam \
  -I$src/system/CMSIS/CMSIS/Include \
@@ -36,14 +36,14 @@ mkdir core
 
 for cxxfile in $CORESRCXX
 do
-  arm-none-eabi-g++ -c ${CXXFLAGS} ${DEFINES} ${INCLUDES} $cxxfile -o ./core/`basename ${cxxfile}`.o
+  arm-none-eabi-g++ -c ${CXXFLAGS} ${DEFINES} -DUSB_MANUFACTURER="\"$usb_manufacturer\"" -DUSB_PRODUCT="\"$usb_product\"" ${INCLUDES} $cxxfile -o ./core/`basename ${cxxfile}`.o
 done
 
 # TODO list the files explicitly
 
 for cfile in $CORESRC
 do
-  arm-none-eabi-gcc -c ${CFLAGS} ${DEFINES} ${INCLUDES} $cfile -o ./core/`basename ${cfile}`.o
+  arm-none-eabi-gcc -c ${CFLAGS} ${DEFINES} -DUSB_MANUFACTURER="\"$usb_manufacturer\"" -DUSB_PRODUCT="\"$usb_product\"" ${INCLUDES} $cfile -o ./core/`basename ${cfile}`.o
 done
 
 arm-none-eabi-gcc -c -x assembler-with-cpp \

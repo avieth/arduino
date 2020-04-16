@@ -6,7 +6,9 @@ for p in $buildInputs; do
 done
 
 DEFINES="-Dprintf=iprintf -DF_CPU=84000000 -DARDUINO=10611 -D__SAM3X8E__ -DUSB_PID=0x003e -DUSB_VID=0x2341 -DUSBCON \
-  -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM" # '-DUSB_MANUFACTURER="Arduino LLC"' -DUSB_PRODUCT=\"Arduino Due\""
+  -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM \
+  \"-DUSB_MANUFACTURER=${usb_manufacturer}\" \
+  \"-DUSB_PRODUCT=${usb_product}\""
 
 INCLUDES="-I$sam/include/system/libsam \
  -I$sam/include/system/CMSIS/CMSIS/Include \
