@@ -72,7 +72,16 @@ pmc.o:
 00000000 T pmc_switch_udpck_to_upllck
 
 pwmc.o:
+         U __assert_func
 00000000 t FindClockConfiguration
+00000000 r __func__.6887
+00000000 r __func__.6898
+00000000 r __func__.6913
+00000000 r __func__.6924
+00000000 r __func__.6935
+00000000 r __func__.6942
+00000000 r __func__.7026
+00000000 r __func__.7032
 00000000 T PWMC_ConfigureChannel
 00000000 T PWMC_ConfigureChannelExt
 00000000 T PWMC_ConfigureClocks
@@ -98,17 +107,12 @@ pwmc.o:
 00000000 T PWMC_SetSyncChannelUpdatePeriod
 00000000 T PWMC_SetSyncChannelUpdateUnlock
 00000000 T PWMC_WriteBuffer
-         U __assert_func
-00000000 r __func__.6793
-00000000 r __func__.6804
-00000000 r __func__.6819
-00000000 r __func__.6830
-00000000 r __func__.6841
-00000000 r __func__.6848
-00000000 r __func__.6932
-00000000 r __func__.6938
 
 rtc.o:
+         U __assert_func
+00000000 r __func__.6884
+00000000 r __func__.6893
+00000000 r __func__.6898
 00000000 T RTC_ClearSCCR
 00000000 T RTC_DisableIt
 00000000 T RTC_EnableIt
@@ -121,22 +125,19 @@ rtc.o:
 00000000 T RTC_SetHourMode
 00000000 T RTC_SetTime
 00000000 T RTC_SetTimeAlarm
-         U __assert_func
-00000000 r __func__.6790
-00000000 r __func__.6799
-00000000 r __func__.6804
 
 rtt.o:
+         U __assert_func
+00000000 r __func__.6891
+00000000 r __func__.6899
 00000000 T RTT_EnableIT
 00000000 T RTT_GetStatus
 00000000 T RTT_GetTime
 00000000 T RTT_SetAlarm
 00000000 T RTT_SetPrescaler
-         U __assert_func
-00000000 r __func__.6797
-00000000 r __func__.6805
 
 spi.o:
+         U pmc_enable_periph_clk
 00000000 T SPI_Configure
 00000000 T SPI_ConfigureNPCS
 00000000 T SPI_Disable
@@ -147,9 +148,12 @@ spi.o:
 00000000 T SPI_IsFinished
 00000000 T SPI_Read
 00000000 T SPI_Write
-         U pmc_enable_periph_clk
 
 tc.o:
+         U __assert_func
+00000000 r __func__.6886
+00000000 r __func__.6892
+00000000 r __func__.6898
 00000000 T TC_Configure
 00000000 T TC_FindMckDivisor
 00000000 T TC_GetStatus
@@ -159,20 +163,31 @@ tc.o:
 00000000 T TC_SetRC
 00000000 T TC_Start
 00000000 T TC_Stop
-         U __assert_func
-00000000 r __func__.6792
-00000000 r __func__.6798
-00000000 r __func__.6804
 
 timetick.o:
+00000000 b _dwTickCount
 00000000 T GetTickCount
 00000000 T Sleep
 00000000 T TimeTick_Configure
 00000000 T TimeTick_Increment
 00000000 T Wait
-00000000 b _dwTickCount
 
 twi.o:
+         U __assert_func
+00000000 r __func__.7361
+00000000 r __func__.7367
+00000000 r __func__.7382
+00000000 r __func__.7386
+00000000 r __func__.7394
+00000000 r __func__.7401
+00000000 r __func__.7405
+00000000 r __func__.7410
+00000000 r __func__.7418
+00000000 r __func__.7432
+00000000 r __func__.7437
+00000000 r __func__.7441
+00000000 r __func__.7446
+00000000 r __func__.7450
 00000000 T TWI_ByteReceived
 00000000 T TWI_ByteSent
 00000000 T TWI_ConfigureMaster
@@ -190,23 +205,10 @@ twi.o:
 00000000 T TWI_Stop
 00000000 T TWI_TransferComplete
 00000000 T TWI_WriteByte
-         U __assert_func
-00000000 r __func__.7151
-00000000 r __func__.7157
-00000000 r __func__.7172
-00000000 r __func__.7176
-00000000 r __func__.7184
-00000000 r __func__.7191
-00000000 r __func__.7195
-00000000 r __func__.7200
-00000000 r __func__.7208
-00000000 r __func__.7222
-00000000 r __func__.7227
-00000000 r __func__.7231
-00000000 r __func__.7236
-00000000 r __func__.7240
 
 usart.o:
+         U __assert_func
+00000000 r __func__.7221
 00000000 T USART_Configure
 00000000 T USART_DisableIt
 00000000 T USART_EnableIt
@@ -222,8 +224,6 @@ usart.o:
 00000000 T USART_SetTransmitterEnabled
 00000000 T USART_Write
 00000000 T USART_WriteBuffer
-         U __assert_func
-00000000 r __func__.7068
 
 wdt.o:
 00000000 T WDT_Disable
@@ -244,32 +244,41 @@ startup_sam3xa.o:
          U CAN0_Handler
          U CAN1_Handler
          U DACC_Handler
-         U DMAC_Handler
          U DebugMon_Handler
+         U DMAC_Handler
          U EFC0_Handler
          U EFC1_Handler
          U EMAC_Handler
-         U HSMCI_Handler
+         U _erelocate
+         U _estack
+         U _etext
+00000000 R exception_table
+         U _ezero
          U HardFault_Handler
+         U HSMCI_Handler
+         U main
          U MemManage_Handler
          U NMI_Handler
+         U PendSV_Handler
          U PIOA_Handler
          U PIOB_Handler
          U PIOC_Handler
          U PIOD_Handler
          U PMC_Handler
          U PWM_Handler
-         U PendSV_Handler
+00000000 T Reset_Handler
          U RSTC_Handler
          U RTC_Handler
          U RTT_Handler
-00000000 T Reset_Handler
+         U _sfixed
          U SMC_Handler
          U SPI0_Handler
+         U _srelocate
          U SSC_Handler
          U SUPC_Handler
          U SVC_Handler
          U SysTick_Handler
+         U _szero
          U TC0_Handler
          U TC1_Handler
          U TC2_Handler
@@ -284,21 +293,12 @@ startup_sam3xa.o:
          U TWI1_Handler
          U UART_Handler
          U UOTGHS_Handler
+         U UsageFault_Handler
          U USART0_Handler
          U USART1_Handler
          U USART2_Handler
          U USART3_Handler
-         U UsageFault_Handler
          U WDT_Handler
-         U _erelocate
-         U _estack
-         U _etext
-         U _ezero
-         U _sfixed
-         U _srelocate
-         U _szero
-00000000 R exception_table
-         U main
 
 adc.o:
 00000000 T adc_configure_power_save
@@ -350,13 +350,19 @@ udp.o:
 udphs.o:
 
 uotghs.o:
-00000000 T UOTGHS_Handler
 00000000 B gpf_isr
+00000000 T UOTGHS_Handler
 
 interrupt_sam_nvic.o:
 00000000 D g_interrupt_enabled
 
 uotghs_device.o:
+         U g_interrupt_enabled
+         U gpf_isr
+         U pmc_enable_periph_clk
+         U pmc_enable_udpck
+         U pmc_enable_upll_clock
+         U pmc_switch_udpck_to_upllck
 00000000 T UDD_Attach
 00000000 T UDD_ClearIN
 00000000 T UDD_ClearOUT
@@ -365,8 +371,8 @@ uotghs_device.o:
 00000000 T UDD_FifoByteCount
 00000000 T UDD_GetFrameNumber
 00000000 T UDD_Init
-00000000 T UDD_InitEP
 00000000 T UDD_InitEndpoints
+00000000 T UDD_InitEP
 00000000 T UDD_ReadWriteAllowed
 00000000 T UDD_ReceivedSetupInt
 00000000 T UDD_Recv
@@ -381,20 +387,20 @@ uotghs_device.o:
 00000000 T UDD_WaitForINOrOUT
 00000000 T UDD_WaitIN
 00000000 T UDD_WaitOUT
+00000000 b ul_recv_fifo_ptr
+00000000 b ul_send_fifo_ptr
+
+uotghs_host.o:
          U g_interrupt_enabled
          U gpf_isr
          U pmc_enable_periph_clk
          U pmc_enable_udpck
          U pmc_enable_upll_clock
          U pmc_switch_udpck_to_upllck
-00000000 b ul_recv_fifo_ptr
-00000000 b ul_send_fifo_ptr
-
-uotghs_host.o:
 00000000 T UHD_BusReset
 00000000 T UHD_GetVBUSState
-00000000 t UHD_ISR
 00000000 T UHD_Init
+00000000 t UHD_ISR
 00000000 T UHD_Pipe0_Alloc
 00000000 T UHD_Pipe_Alloc
 00000000 T UHD_Pipe_Free
@@ -403,12 +409,6 @@ uotghs_host.o:
 00000000 T UHD_Pipe_Send
 00000000 T UHD_Pipe_Write
 00000000 T UHD_SetStack
-         U g_interrupt_enabled
-         U gpf_isr
-         U pmc_enable_periph_clk
-         U pmc_enable_udpck
-         U pmc_enable_upll_clock
-         U pmc_switch_udpck_to_upllck
 00000000 b uhd_state
 
 dacc.o:
@@ -441,16 +441,16 @@ can.o:
 00000000 T can_disable_interrupt
 00000000 T can_disable_low_power_mode
 00000000 T can_disable_overload_frame
-00000000 T can_disable_time_triggered_mode
 00000000 T can_disable_timer_freeze
+00000000 T can_disable_time_triggered_mode
 00000000 T can_disable_tx_repeat
 00000000 T can_enable
 00000000 T can_enable_autobaud_listen_mode
 00000000 T can_enable_interrupt
 00000000 T can_enable_low_power_mode
 00000000 T can_enable_overload_frame
-00000000 T can_enable_time_triggered_mode
 00000000 T can_enable_timer_freeze
+00000000 T can_enable_time_triggered_mode
 00000000 T can_enable_tx_repeat
 00000000 T can_get_internal_timer_value
 00000000 T can_get_interrupt_mask
@@ -485,12 +485,11 @@ efc.o:
 00000000 T efc_get_wait_state
 00000000 T efc_init
 00000000 T efc_perform_command
-0000006c T efc_perform_fcr
+00000070 T efc_perform_fcr
 00000000 T efc_perform_read_sequence
 00000000 T efc_set_flash_access_mode
 00000000 T efc_set_wait_state
-00000068 T efc_write_fmr
-00000000 b iap_perform_command.7049
+0000006c T efc_write_fmr
 
 gpbr.o:
 00000000 T gpbr_read
